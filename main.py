@@ -46,7 +46,9 @@ for i in range(l2):
     else:
         result.append('null')
 
-print(result)
+repair_len = len(list_id)-len(result)
+for i in range(repair_len):
+    result.append('null')
 
-dataframe = pd.DataFrame({'result': result})
-dataframe.to_csv("dataset2.csv", index=False, sep=',')
+data.insert(loc=3, column='result', value=result)
+data.to_csv("dataset.csv", index=False, )
