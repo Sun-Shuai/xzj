@@ -9,18 +9,18 @@
 
 import pandas as pd
 
-filename = '交易量.csv'
-insert_loc = 5
+filename = '收益率 (5).csv'
+insert_loc = 2
 insert_column_name = 'result'
 
 data = pd.read_csv(filename, dtype={'id': str, 'date': str, 'id2': str, 'date2': str,
-                                    'deal2': str})
+                                    'iiiii2': str})
 
 # print(data)
 
 list_id = data['id2']
 list_date = data['date2']
-list_short = data['deal2']
+list_short = data['iiiii2']
 
 list_id_date = []
 l1 = len(list_id)
