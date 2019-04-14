@@ -9,20 +9,18 @@
 
 import pandas as pd
 
-filename = 'old.xlsx'
-insert_sheet_name = 'Sheet1'
-insert_loc = 3
+filename = '交易量.csv'
+insert_loc = 5
 insert_column_name = 'result'
 
-data = pd.read_excel(filename, sheet_name=insert_sheet_name,
-                     dtype={'id': str, 'date': str, 'short': str, 'id2': str, 'date2': str,
-                            'short2': str})
+data = pd.read_csv(filename, dtype={'id': str, 'date': str, 'id2': str, 'date2': str,
+                                    'deal2': str})
 
 # print(data)
 
-list_id = data['id2']
-list_date = data['date2']
-list_short = data['short2']
+list_id = data['id2'].astype(str)
+list_date = data['date2'].astype(str)
+list_short = data['deal2'].astype(str)
 
 # print(list_id)
 # print(list_date)
@@ -44,10 +42,11 @@ result = []
 l2 = len(data[data['id'].notnull()])
 
 for i in range(l2):
-    current_id = data.loc[i].values[0:1].tolist()[0]
+
+    current_id = data.loc[i].values[0:1][0]
     current_date = data.loc[i].values[1:2]
 
-    current_id_date = str(current_id) + '_' + current_date
+    current_id_date = str(current_id) + '_' + (current_date)
 
     if (current_id_date[0] in dic_a):
         result.append(dic_a[current_id_date[0]])
@@ -61,4 +60,4 @@ for i in range(repair_len):
     result.append('null')
 
 data.insert(loc=insert_loc, column=insert_column_name, value=result)
-data.to_excel(filename, sheet_name=insert_sheet_name, index=False, )
+data.to_csv(filename, index=False, )
