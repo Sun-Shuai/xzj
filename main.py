@@ -18,20 +18,15 @@ data = pd.read_csv(filename, dtype={'id': str, 'date': str, 'id2': str, 'date2':
 
 # print(data)
 
-list_id = data['id2'].astype(str)
-list_date = data['date2'].astype(str)
-list_short = data['deal2'].astype(str)
-
-# print(list_id)
-# print(list_date)
-# print(list_short)
+list_id = data['id2']
+list_date = data['date2']
+list_short = data['deal2']
 
 list_id_date = []
 l1 = len(list_id)
 for i in range(l1):
-    # print(type(list_id[i]))
-    # print(type(list_date[i]))
-    list_id_date.append(list_id[i] + '_' + list_date[i])
+    id_data = (list_id[i], list_date[i])
+    list_id_date.append(id_data)
 
 dic_a = dict(zip(list_id_date, list_short))
 
@@ -43,13 +38,13 @@ l2 = len(data[data['id'].notnull()])
 
 for i in range(l2):
 
-    current_id = data.loc[i].values[0:1][0]
-    current_date = data.loc[i].values[1:2]
+    current_id = data.loc[i][0]
+    current_date = data.loc[i][1]
 
-    current_id_date = str(current_id) + '_' + (current_date)
+    current_id_date = (current_id, current_date)
 
-    if (current_id_date[0] in dic_a):
-        result.append(dic_a[current_id_date[0]])
+    if (current_id_date in dic_a):
+        result.append(dic_a[current_id_date])
     else:
         result.append('null')
 
