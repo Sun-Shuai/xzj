@@ -9,8 +9,14 @@
 
 import pandas as pd
 
-data = pd.read_csv('dataset.csv', dtype={'id': object, 'date': object, 'short': object, 'id2': object, 'date2': object,
-                                         'short2': object})
+filename = 'old.xlsx'
+insert_sheet_name = 'Sheet1'
+insert_loc = 3
+insert_column_name = 'result'
+
+data = pd.read_excel(filename, sheet_name=insert_sheet_name,
+                     dtype={'id': str, 'date': str, 'short': str, 'id2': str, 'date2': str,
+                            'short2': str})
 
 # print(data)
 
@@ -25,11 +31,13 @@ list_short = data['short2']
 list_id_date = []
 l1 = len(list_id)
 for i in range(l1):
-    list_id_date.append(str(str(list_id[i]) + '_' + list_date[i]))
+    # print(type(list_id[i]))
+    # print(type(list_date[i]))
+    list_id_date.append(list_id[i] + '_' + list_date[i])
 
 dic_a = dict(zip(list_id_date, list_short))
 
-# print(dic_a)
+print(dic_a)
 
 result = []
 
@@ -46,9 +54,11 @@ for i in range(l2):
     else:
         result.append('null')
 
-repair_len = len(list_id)-len(result)
+print(result)
+
+repair_len = len(list_id) - len(result)
 for i in range(repair_len):
     result.append('null')
 
-data.insert(loc=3, column='result', value=result)
-data.to_csv("dataset.csv", index=False, )
+data.insert(loc=insert_loc, column=insert_column_name, value=result)
+data.to_excel(filename, sheet_name=insert_sheet_name, index=False, )
