@@ -9,18 +9,22 @@
 
 import pandas as pd
 
-filename = '控制变量.csv'
-insert_loc = 4
-insert_column_name = 'result3'
+filename = 'i-5-2.csv'
+insert_loc = 2
+insert_column_name = 'result'
+colunms_name = ('id', 'date', 'id2', 'date2', 'i2')
 
-data = pd.read_csv(filename, dtype={'id': str, 'date': str, 'id2': str, 'date2': str,
-                                    'size2': str})
+# --------------------------------------------以下内容不需要改动--------------------------------------------
+
+data = pd.read_csv(filename,
+                   dtype={colunms_name[0]: str, colunms_name[1]: str, colunms_name[2]: str, colunms_name[3]: str,
+                          colunms_name[4]: str})
 
 # print(data)
 
-list_id = data['id2']
-list_date = data['date2']
-list_short = data['size2']
+list_id = data[colunms_name[2]]
+list_date = data[colunms_name[3]]
+list_short = data[colunms_name[4]]
 
 list_id_date = []
 l1 = len(list_id)
@@ -34,7 +38,7 @@ print(dic_a)
 
 result = []
 
-l2 = len(data[data['id'].notnull()])
+l2 = len(data[data[colunms_name[0]].notnull()])
 
 for i in range(l2):
 
