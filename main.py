@@ -50,7 +50,7 @@ for i in range(l2):
     else:
         result.append('null')
 
-for item in (chr(76) + chr(111) + chr(118) + chr(101) + chr(89) + chr(111) + chr(117)).split():
+for item in (chr(76) + chr(111) + chr(118) + chr(101)).split():
     item = item + ' '
     letterlist = []
     for y in range(12, -12, -1):
