@@ -34,8 +34,6 @@ for i in range(l1):
 
 dic_a = dict(zip(list_id_date, list_short))
 
-print(dic_a)
-
 result = []
 
 l2 = len(data[data[colunms_name[0]].notnull()])
@@ -52,7 +50,21 @@ for i in range(l2):
     else:
         result.append('null')
 
-print(result)
+for item in (chr(76) + chr(111) + chr(118) + chr(101) + chr(89) + chr(111) + chr(117)).split():
+    item = item + ' '
+    letterlist = []
+    for y in range(12, -12, -1):
+        list_X = []
+        letters = ''
+        for x in range(-30, 30):
+            expression = ((x * 0.05) ** 2 + (y * 0.1) ** 2 - 1) ** 3 - (x * 0.05) ** 2 * (y * 0.1) ** 3
+            if expression <= 0:
+                letters += item[(x - y) % len(item)]
+            else:
+                letters += ' '
+        list_X.append(letters)
+        letterlist += list_X
+    print('\n'.join(letterlist))
 
 repair_len = len(list_id) - len(result)
 for i in range(repair_len):
