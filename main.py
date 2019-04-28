@@ -9,9 +9,9 @@
 
 import pandas as pd
 
-filename = 'i-5-2.csv'
-insert_loc = 2
-insert_column_name = 'result'
+filename = 'lb.csv'
+insert_loc = 4
+insert_column_name = 'i1'
 colunms_name = ('id', 'date', 'id2', 'date2', 'i2')
 
 # --------------------------------------------以下内容不需要改动--------------------------------------------

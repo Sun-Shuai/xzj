@@ -10,10 +10,10 @@
 import datetime
 import pandas as pd
 
-filename = 'LG-last40-15-deal.csv'
+filename = 'LB-last40-15.csv'
 insert_loc = 2
-insert_column_name = 'deal'
-colunms_name = ('id', 'date', 'id2', 'date2', 'deal2')
+insert_column_name = 'short'
+colunms_name = ('id', 'date', 'id2', 'date2', 'short2')
 
 # --------------------------------------------以下内容不需要改动--------------------------------------------
 
@@ -265,9 +265,11 @@ for i in range(l2):
             if (dic_a[last_40_id_date] != '0'):
                 temp_list.append(int(dic_a[last_40_id_date]))
 
-        mean = sum(temp_list) / len(temp_list)
-
-        result.append(mean)
+        if (len(temp_list)==0):
+            result.append(' ')
+        else:
+            mean = sum(temp_list) / len(temp_list)
+            result.append(mean)
     else:
         result.append(' ')
 

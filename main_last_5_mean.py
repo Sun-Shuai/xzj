@@ -10,7 +10,7 @@
 import datetime
 import pandas as pd
 
-filename = 'LG-last5-deal.csv'
+filename = 'EG-last5-deal.csv'
 insert_loc = 2
 insert_column_name = 'deal'
 colunms_name = ('id', 'date', 'id2', 'date2', 'deal2')
